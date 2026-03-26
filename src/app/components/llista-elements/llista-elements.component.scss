@@ -1,0 +1,25 @@
+.llista {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+
+  grid-template-columns: 1fr;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #e74c3c;
+  background-color: #fdecea;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

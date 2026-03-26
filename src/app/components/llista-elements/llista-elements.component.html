@@ -1,0 +1,39 @@
+<form #f="ngForm" (ngSubmit)="aplicarCerca()">
+
+  <label for="campCerca">Cerca d’elements</label>
+
+<input
+  id="campCerca"
+  type="text"
+  name="cerca"
+  [(ngModel)]="textFormulari"
+  minlength="3"
+  required
+  #cercaCtrl="ngModel"
+  placeholder="Cerca elements (mínim 3 caràcters)"
+  aria-describedby="missatgeError"
+  [attr.aria-invalid]="cercaCtrl.invalid"
+/>
+
+  <!-- Errors -->
+  <div id="missatgeError" class="error" *ngIf="cercaCtrl.invalid && cercaCtrl.touched">
+    <p *ngIf="cercaCtrl.errors?.['required']">El camp és obligatori.</p>
+    <p *ngIf="cercaCtrl.errors?.['minlength']">Es necessiten almenys 3 caràcters.</p>
+  </div>
+
+  <button type="submit" [disabled]="f.invalid">Cercar</button>
+</form>
+
+
+<app-barra-cerca (textCerca)="actualitzarFiltre($event)"></app-barra-cerca>
+
+<div *ngIf="elementsFiltrats.length === 0" class="sense-resultats" role="alert">
+  No s'han trobat resultats per a la cerca.
+</div>
+
+<div class="llista">
+  <app-targeta-element
+    *ngFor="let elem of elementsFiltrats; trackBy: trackById"
+    [element]="elem">
+  </app-targeta-element>
+</div>
