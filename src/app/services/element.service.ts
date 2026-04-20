@@ -48,19 +48,23 @@ export class ElementService {
       });
   }
 
-  cercar(terme: string): void {
-    this.iniciarCarrega();
+cercar(terme: string): void {
+  this.iniciarCarrega();
 
-    this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`)
-      .subscribe({
-        next: (res) => {
-          this._elements.set(res);
-          this.finalitzarCarrega();
-        },
-        error: () => {
-          this._error.set('Error en la cerca. Torna-ho a intentar.');
-          this.finalitzarCarrega();
-        }
-      });
-  }
+  this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`)
+    .subscribe({
+      next: (res) => {
+        this._elements.set(res);
+        this.finalitzarCarrega();
+      },
+      error: () => {
+        this._error.set('Error en la cerca. Torna-ho a intentar.');
+        this.finalitzarCarrega();
+      }
+    });
+}
+
+cercarObservable(terme: string) {
+  return this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`);
+}
 }

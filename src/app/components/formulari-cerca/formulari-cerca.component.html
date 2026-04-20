@@ -1,0 +1,36 @@
+<form [formGroup]="form" class="formulari">
+
+  <label for="terme">Cerca</label>
+
+  <input id="terme"
+         type="text"
+         formControlName="termeCerca"
+         placeholder="Escriu un terme..." />
+
+  <!-- Botó netejar -->
+  <button type="button"
+          *ngIf="terme?.value"
+          (click)="netejar()">
+    Netejar
+  </button>
+
+  <!-- Indicador validació async -->
+  <div *ngIf="terme?.pending" class="validant">
+    Validant...
+  </div>
+
+  <!-- Errors sync -->
+  <div *ngIf="terme?.touched && terme?.errors?.['minlength']" class="error">
+    El terme ha de tenir almenys 2 caràcters.
+  </div>
+
+  <div *ngIf="terme?.touched && terme?.errors?.['maxlength']" class="error">
+    El terme no pot superar els 50 caràcters.
+  </div>
+
+  <!-- Error async -->
+  <div *ngIf="terme?.touched && terme?.errors?.['sensResultats']" class="error">
+    No s'han trobat resultats.
+  </div>
+
+</form>
