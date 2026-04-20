@@ -1,0 +1,14 @@
+{
+  "elements": [
+    { "id": 1, "name": "Press banca", "value": 80, "popular": true, "description": "Pectoral" },
+    { "id": 2, "name": "Sentadilla", "value": 100, "popular": true },
+    { "id": 3, "name": "Peso muerto", "value": 120, "popular": true },
+    { "id": 4, "name": "Dominadas", "value": 0, "popular": false },
+    { "id": 5, "name": "Fondos", "value": 0, "popular": false },
+    { "id": 6, "name": "Curl bíceps", "value": 20, "popular": false },
+    { "id": 7, "name": "Extensión cuádriceps", "value": 40, "popular": false },
+    { "id": 8, "name": "Press militar", "value": 50, "popular": true },
+    { "id": 9, "name": "Remo con barra", "value": 60, "popular": false },
+    { "id": 10, "name": "Aperturas", "value": 12, "popular": false }
+  ]
+}

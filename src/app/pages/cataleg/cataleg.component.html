@@ -1,0 +1,20 @@
+<!-- ESTAT CARREGANT -->
+<div *ngIf="elementService.carregant()" class="carregant">
+  <div class="spinner"></div>
+  <p>Carregant elements...</p>
+</div>
+
+<!-- ESTAT ERROR -->
+<div *ngIf="elementService.error()" class="error-box">
+  <p class="error-text">{{ elementService.error() }}</p>
+  <button (click)="reintentar()">Reintentar</button>
+</div>
+
+<!-- ESTAT ÈXIT -->
+<div *ngIf="!elementService.carregant() && !elementService.error()" class="grid">
+  <div class="card" *ngFor="let elem of elementService.elements()">
+    <h3>{{ elem.name }}</h3>
+    <p>Valor: {{ elem.value }}</p>
+    <p *ngIf="elem.description">{{ elem.description }}</p>
+  </div>
+</div>
