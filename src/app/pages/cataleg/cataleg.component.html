@@ -1,5 +1,16 @@
 <app-formulari-cerca></app-formulari-cerca>
 
+<div class="panell-preferits">
+  <h3>Preferits ({{ preferitsService.totalPreferits() }})</h3>
+
+  <div class="grid">
+    <div class="card" *ngFor="let elem of preferitsService.preferits()">
+      <h4>{{ elem.name }}</h4>
+      <p>Valor: {{ elem.value }}</p>
+    </div>
+  </div>
+</div>
+
 <!-- ESTAT CARREGANT -->
 <div *ngIf="elementService.carregant()" class="carregant">
   <div class="spinner"></div>
@@ -14,9 +25,8 @@
 
 <!-- ESTAT ÈXIT -->
 <div *ngIf="!elementService.carregant() && !elementService.error()" class="grid">
-  <div class="card" *ngFor="let elem of elementService.elements()">
-    <h3>{{ elem.name }}</h3>
-    <p>Valor: {{ elem.value }}</p>
-    <p *ngIf="elem.description">{{ elem.description }}</p>
-  </div>
+  <app-element-card
+    *ngFor="let elem of elementService.elements()"
+    [element]="elem">
+  </app-element-card>
 </div>

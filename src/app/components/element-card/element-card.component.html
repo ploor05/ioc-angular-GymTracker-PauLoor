@@ -1,0 +1,13 @@
+<div class="header">
+  <h3>{{ element.name }}</h3>
+
+  <button 
+    class="fav-btn" 
+    [class.preferit]="preferitsService.esPreferit(element.id)"
+    (click)="togglePreferit()">
+    {{ preferitsService.esPreferit(element.id) ? '★' : '☆' }}
+  </button>
+</div>
+
+<p>Valor: {{ element.value }}</p>
+<p *ngIf="element.description">{{ element.description }}</p>

@@ -18,7 +18,16 @@ export class ElementService {
   carregant = this._carregant.asReadonly();
   error = this._error.asReadonly();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+    // DADES DE PROVA PER A L’EXERCICI 4
+  this._elements.set([
+    { id: 1, name: 'Press banca', value: 80, popular: false },
+    { id: 2, name: 'Sentadilla', value: 100, popular: false },
+    { id: 3, name: 'Peso muerto', value: 120, popular: false },
+    { id: 4, name: 'Press militar', value: 50, popular: false }
+  ]);
+}
 
   // --- Funcions internes per gestionar estats ---
   private iniciarCarrega() {
@@ -48,23 +57,23 @@ export class ElementService {
       });
   }
 
-cercar(terme: string): void {
-  this.iniciarCarrega();
+  cercar(terme: string): void {
+    this.iniciarCarrega();
 
-  this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`)
-    .subscribe({
-      next: (res) => {
-        this._elements.set(res);
-        this.finalitzarCarrega();
-      },
-      error: () => {
-        this._error.set('Error en la cerca. Torna-ho a intentar.');
-        this.finalitzarCarrega();
-      }
-    });
-}
+    this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`)
+      .subscribe({
+        next: (res) => {
+          this._elements.set(res);
+          this.finalitzarCarrega();
+        },
+        error: () => {
+          this._error.set('Error en la cerca. Torna-ho a intentar.');
+          this.finalitzarCarrega();
+        }
+      });
+  }
 
-cercarObservable(terme: string) {
-  return this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`);
-}
+  cercarObservable(terme: string) {
+    return this.http.get<ElementCataleg[]>(`${environment.apiUrl}?name_like=${terme}`);
+  }
 }
