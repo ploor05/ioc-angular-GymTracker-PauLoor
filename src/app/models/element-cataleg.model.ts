@@ -4,4 +4,5 @@ export interface ElementCataleg {
   value: number;
   popular: boolean;
   description?: string;
+  notes?: string[];
 }

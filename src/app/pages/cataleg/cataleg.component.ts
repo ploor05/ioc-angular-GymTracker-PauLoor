@@ -4,6 +4,7 @@ import { ElementService } from '../../services/element.service';
 import { FormulariCercaComponent } from '../../components/formulari-cerca/formulari-cerca.component';
 import { PreferitsService } from '../../serveis/preferits.service';
 import { ElementCardComponent } from '../../components/element-card/element-card.component';
+import { PreferitsPanelComponent } from '../../components/preferits-panel/preferits-panel.component';
 
 @Component({
   selector: 'app-cataleg',
@@ -12,7 +13,8 @@ import { ElementCardComponent } from '../../components/element-card/element-card
     NgIf,
     NgFor,
     FormulariCercaComponent,
-    ElementCardComponent
+    ElementCardComponent,
+    PreferitsPanelComponent
   ],
   templateUrl: './cataleg.component.html',
   styleUrls: ['./cataleg.component.scss']

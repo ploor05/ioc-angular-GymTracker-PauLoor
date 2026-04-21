@@ -59,4 +59,14 @@ export class PreferitsService {
   esPreferit(id: number): boolean {
     return this._preferits().some(e => e.id === id);
   }
+
+  // --- Actualitzar notes ---
+  actualitzarNotes(id: number, notes: string[]) {
+    const actuals = this._preferits();
+    const actualitzat = actuals.map(e =>
+      e.id === id ? { ...e, notes } : e
+    );
+    this._preferits.set(actualitzat);
+    this.guardarPreferits();
+  }
 }

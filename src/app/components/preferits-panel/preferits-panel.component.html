@@ -1,0 +1,26 @@
+<div class="preferit" *ngFor="let elem of elementsFA.controls; let i = index">
+
+  <h3>{{ preferitsService.preferits()[i].name }}</h3>
+
+  <div class="notes">
+    <div class="nota" *ngFor="let notaCtrl of notesFA(i).controls; let j = index">
+
+      <input 
+        type="text"
+        [formControl]="notaCtrl"
+        (blur)="guardar(i)"
+        placeholder="Escriu una nota..."
+      >
+
+      <button class="delete" (click)="eliminarNota(i, j)">x</button>
+
+      <p class="error" *ngIf="notaCtrl.invalid && notaCtrl.touched">
+        La nota ha de tenir mínim 3 caràcters.
+      </p>
+
+    </div>
+
+    <button class="add" (click)="afegirNota(i)">+</button>
+  </div>
+
+</div>
