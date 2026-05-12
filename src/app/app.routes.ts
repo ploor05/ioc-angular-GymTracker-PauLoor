@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { CatalegComponent } from './pages/cataleg/cataleg.component';
 import { CercaComponent } from './pages/cerca/cerca.component';
-import { PreferitsComponent } from './pages/preferits/preferits.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DetallComponent } from './pages/detall/detall.component';
 
@@ -17,8 +16,10 @@ export const routes: Routes = [
 
   {
     path: 'preferits',
-    component: PreferitsComponent,
-    canActivate: [authGuard]   // Protecció de ruta
+    loadComponent: () =>
+      import('./pages/preferits/preferits.component')
+        .then(m => m.PreferitsComponent),
+    canActivate: [authGuard]
   },
 
   { path: 'login', component: LoginComponent },
