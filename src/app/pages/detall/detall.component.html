@@ -1,0 +1,8 @@
+<div *ngIf="element$ | async as element; else carregant">
+  <h2>{{ element.nom }}</h2>
+  <p>{{ element.descripcio }}</p>
+</div>
+
+<ng-template #carregant>
+  <p>Carregant detall...</p>
+</ng-template>

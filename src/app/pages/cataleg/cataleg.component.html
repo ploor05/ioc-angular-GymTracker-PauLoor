@@ -1,1 +1,8 @@
-<p>cataleg works!</p>
+<cdk-virtual-scroll-viewport
+  [itemSize]="120"
+  style="height: 500px; overflow: auto;"
+>
+  <div *cdkVirtualFor="let element of elementService.elements()">
+    <app-element-card [element]="element"></app-element-card>
+  </div>
+</cdk-virtual-scroll-viewport>
